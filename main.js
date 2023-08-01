@@ -5,9 +5,10 @@ const bookEl = document.getElementById('bookEl');
 
 // array needed to add the objects to
 let myLibrary = []
-
+// class for constructor
+class Book{
 //Book constructor to create objects
-function Book(author, title, pages, read){
+constructor(author, title, pages, read){
 
     this.author = author
     this.title = title
@@ -16,11 +17,16 @@ function Book(author, title, pages, read){
     
 }
 
-// toggle read 
-
-Book.prototype.toggleRead = function(){
+toggleRead(){
     this.read = !this.read;
-} 
+}
+
+}
+
+// toggle read , moved to class
+//Book.prototype.toggleRead = function(){
+    
+//} 
 
 // add function toggleRead to each book created
 function toggleRead(index){
@@ -37,7 +43,7 @@ function addBookToLibrary(){
     const pages = document.getElementById('pages').value ;
     const read = document.getElementById('read').checked ;
 
-    const newBook = new Book(author, title, pages,  read);
+    const newBook = new Book(author, title, pages, read);
 
     myLibrary.push(newBook);
 
@@ -88,8 +94,8 @@ viewBooks();
 // to add objects to array 
 btn.addEventListener("click", function(event) {
 event.preventDefault();
-addBookToLibrary()
-viewBooks()
+addBookToLibrary();
+viewBooks();
 console.log(myLibrary);
 })
    
